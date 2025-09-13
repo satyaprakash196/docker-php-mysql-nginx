@@ -1,17 +1,17 @@
 version: "3.9"
 
 services:
-  # Web Application
+  # PHP Application
   app:
     build: ./app
-    container_name: app_service
+    container_name: php_app_service
     restart: always
     volumes:
       - ./app:/var/www/html
     environment:
       - DB_HOST=db
-      - DB_USER=root
-      - DB_PASSWORD=rootpassword
+      - DB_USER=myuser
+      - DB_PASSWORD=mypassword
       - DB_NAME=my_database
     networks:
       - app_network
@@ -52,3 +52,4 @@ networks:
 
 volumes:
   mysql_data:
+
