@@ -27,7 +27,24 @@ It provides an easy way to set up a PHP development environment without installi
 
 . Build and Start Containers
 
-docker compose up -d
+docker-compose up -d --build
+
+Verify the Setup
+
+You should see three containers:
+
+php_app_service
+
+mysql_service
+
+nginx_service
+
+Verify Database Directly
+docker exec -it mysql_service mysql -u root -p
+Check the database:
+SHOW DATABASES;
+USE my_database;
+SHOW TABLES;
 
 Environment Variables
 
@@ -42,3 +59,14 @@ docker compose logs	View logs from all containers
 docker compose ps	List running containers
 docker exec -it php bash	Access PHP container shell
 docker exec -it mysql bash	Access MySQL container shell
+
+
+Frontend: User visits http://localhost:8080
+
+Nginx: Receives the request and passes it to PHP.
+
+PHP Code: Fetches blog posts from MySQL.
+
+MySQL: Stores all posts, users, and comments.
+
+Response: PHP sends HTML back via Nginx to the browser.
